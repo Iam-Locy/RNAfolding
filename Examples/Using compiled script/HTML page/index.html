@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNA folding example</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Example for RNA folding</h1>
+    <div>
+        <table>
+            <tr>
+                <td><h3>Random RNA sequence</h3></td>
+                <td><h3>The predicted structure</h3></td>
+                <td><h3>Minimum free energy of structure</h3></td>
+            </tr>
+            <tr>
+                <td><p id="normal-rna-in"></p></td>
+                <td><p id="normal-rna-out-db"></p></td>
+                <td><p id="normal-rna-out-mfe"></p></td>
+            </tr>
+            <tr>
+                <td><h3>Random adapter RNA</h3></td>
+            </tr>
+            <tr>
+                <td><p id="adapter-in"></p></td>
+                <td><p id="adapter-out-db"></p></td>
+                <td><p id="adapter-out-mfe"></p></td>
+            </tr>
+            <tr>
+                <td><h3>Structure folded with the adapter</h3></td>
+                <td><p id="folded-with-adapter-db"></p></td>
+                <td><p id="folded-with-adapter-mfe"></p></td>
+            </tr>
+            <tr>
+                <td><h3>Base pair distance between the normal and adapter mediated folding:</h3></td>
+                <td><p id="distance"></p></td>
+            </tr>
+        </table>
+        
+        
+        
+        
+        
+        
+    </div>
+    <button onclick="window.location.reload()">Refresh</button>
+    <footer>
+        Created by Kóródi Lőrinc (korodilorinc@gmail.com) in 2024
+    </footer>
+</body>
+<script src="./folding/fold.js"></script>
+<script src="./folding/foldWithAdapter.js"></script>
+<script src="./folding/bpDistance.js"></script>
+<script>
+    var normalRNAIn = document.getElementById("normal-rna-in")
+    var normalRNAOutDB = document.getElementById("normal-rna-out-db")
+    var normalRNAOutMFE = document.getElementById("normal-rna-out-mfe")
+
+    var adapterIn = document.getElementById("adapter-in")
+    var adapterOutDB = document.getElementById("adapter-out-db")
+    var adapterOutMFE = document.getElementById("adapter-out-mfe")
+
+    var adapterFoldedDB = document.getElementById("folded-with-adapter-db")
+    var adapterFoldedMFE = document.getElementById("folded-with-adapter-mfe")
+
+    var distance = document.getElementById("distance")
+
+    function randomRNA(n){
+        var out = ""
+
+        for(let i = 0; i < n; i++){
+            out += ['A', 'C', 'G', 'U'][Math.floor(Math.random() * 4)]
+        }
+
+        return out
+    }
+
+    const rnaSeq = randomRNA(30)
+    const foldedRNA = fold(rnaSeq)
+
+    normalRNAIn.textContent = rnaSeq
+    normalRNAOutDB.textContent = foldedRNA[0]
+    normalRNAOutMFE.textContent = foldedRNA[1]
+
+    const adapterSeq = randomRNA(15)
+    const adapterStr = fold(adapterSeq)
+
+    const adapter = {
+        seq: adapterSeq,
+        str: adapterStr
+    }
+
+    adapterIn.textContent = adapterSeq
+    adapterOutDB.textContent = adapterStr[0]
+    adapterOutMFE.textContent = adapterStr[1]
+    
+    const adapterFoldedRNA = foldWithAdapter(rnaSeq, adapter)
+
+    adapterFoldedDB.textContent = adapterFoldedRNA[0]
+    adapterFoldedMFE.textContent = adapterFoldedRNA[1]
+
+    distance.textContent = bpDistance(foldedRNA[0], adapterFoldedRNA[0])
+
+
+
+</script>
+</html>

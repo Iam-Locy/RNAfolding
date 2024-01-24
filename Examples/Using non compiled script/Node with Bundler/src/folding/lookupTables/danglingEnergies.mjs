@@ -1,0 +1,72 @@
+/*
+    Energy values described in:
+       Turner, D. H., & Mathews, D. H. (2009). NNDB: The Nearest Neighbor Parameter Database for predicting stability of Nucleic Acid Secondary Structure. Nucleic Acids Research, 38(suppl_1). https://doi.org/10.1093/nar/gkp892 
+    and:
+        https://rna.urmc.rochester.edu/NNDB/turner04/index.html
+    
+    The values are rounded and combined to be consistent with:
+        https://github.com/ViennaRNA/ViennaRNA/blob/master/src/ViennaRNA/params/default.c
+*/
+
+export default JSON.parse(`{
+  ".A/AU": -70,
+  ".C/AU": -10,
+  ".G/AU": -70,
+  ".U/AU": -10,
+  ".A/CG": -110,
+  ".C/CG": -40,
+  ".G/CG": -130,
+  ".U/CG": -60,
+  ".A/GC": -170,
+  ".C/GC": -80,
+  ".G/GC": -170,
+  ".U/GC": -120,
+  ".A/GU": -70,
+  ".C/GU": -10,
+  ".G/GU": -70,
+  ".U/GU": -10,
+  ".A/UA": -80,
+  ".C/UA": -50,
+  ".G/UA": -80,
+  ".U/UA": -60,
+  ".A/UG": -80,
+  ".C/UG": -50,
+  ".G/UG": -80,
+  ".U/UG": -60,
+  ".X/AU": -10,
+  ".X/CG": -40,
+  ".X/GC": -80,
+  ".X/GU": -10,
+  ".X/UA": -50,
+  ".X/UG": -50,
+  "A./AU": -30,
+  "C./AU": -30,
+  "G./AU": -40,
+  "U./AU": -20,
+  "A./CG": -50,
+  "C./CG": -30,
+  "G./CG": -20,
+  "U./CG": -10,
+  "A./GC": -20,
+  "C./GC": -30,
+  "G./GC":   0,
+  "U./GC":   0,
+  "A./GU": -30,
+  "C./GU": -30,
+  "G./GU": -40,
+  "U./GU": -20,
+  "A./UA": -30,
+  "C./UA": -10,
+  "G./UA": -20,
+  "U./UA": -20,
+  "A./UG": -30,
+  "C./UG": -10,
+  "G./UG": -20,
+  "U./UG": -20,
+  "X./AU": -20,
+  "X./CG": -10,
+  "X./GC":  0,
+  "X./GU": -20,
+  "X./UA": -10,
+  "X./UG": -10
+}`);
