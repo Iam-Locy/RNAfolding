@@ -32,6 +32,6 @@ console.log(`
     Structure of RNA: ${RNAstr}\n\n
     Adapter: ${AdapterSeq}\n
     Structure of Adapter: ${AdapterStr}\n\n
-    RNA folded with ADapter: ${RNAFoldedWithAdapter}\n\n
+    RNA folded with Adapter: ${RNAFoldedWithAdapter}\n\n
     Base pair distance between the two folds: ${distance}
 `)
